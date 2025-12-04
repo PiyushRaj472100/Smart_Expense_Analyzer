@@ -4,7 +4,12 @@ A full-stack personal finance dashboard that helps you track daily expenses, vis
 
 ## Live Demo
 
-> Add your deployed frontend URL here (e.g. `https://smart-expense-analyzer.vercel.app`).
+### 🔹 Frontend (User Interface)
+https://smart-expense-analyzer.vercel.app
+
+### 🔹 Backend API (Node.js + Express)
+https://smart-expense-analyzer.onrender.com
+
 
 ## Screenshots
 
