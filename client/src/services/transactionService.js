@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE = "http://localhost:4000/transactions";
+const BASE = `${import.meta.env.VITE_API_URL}/transactions`;
+
 
 export const getTransactions = (token) =>
   axios.get(BASE, {

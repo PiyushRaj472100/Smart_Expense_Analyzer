@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API = "http://localhost:4000/insights";
+const API = `${import.meta.env.VITE_API_URL}/insights`;
+
 
 const withMethod = (base, method) =>
   method && method !== "ALL" ? `${base}?method=${method}` : base;
