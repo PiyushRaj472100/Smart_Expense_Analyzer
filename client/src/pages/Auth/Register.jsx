@@ -12,44 +12,50 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
 
   const handleRegister = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!name.trim() || !email.trim() || !password.trim()) {
-      alert("Please fill all fields.");
-      return;
-    }
+  if (!name.trim() || !email.trim() || !password.trim()) {
+    alert("Please fill all fields.");
+    return;
+  }
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match.");
-      return;
-    }
+  if (password !== confirmPassword) {
+    alert("Passwords do not match.");
+    return;
+  }
 
-    setLoading(true);
+  setLoading(true);
 
-    try {
+  try {
     const API_URL = import.meta.env.VITE_API_URL;
-await axios.post(`${API_URL}/auth/register`, {
-  name,
-  email,
-  password,
-      });
 
-      if (res.data?.token) {
-        localStorage.setItem("token", res.data.token);
-      }
+    const res = await axios.post(`${API_URL}/auth/register`, {
+      name,
+      email,
+      password,
+    });
 
-      if (res.data?.user) {
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-      }
-
-      navigate("/dashboard");
-    } catch (err) {
-      alert(err.response?.data?.error || "Registration failed");
-      console.log(err.response?.data || err);
-    } finally {
-      setLoading(false);
+    // Save token
+    if (res.data?.token) {
+      localStorage.setItem("token", res.data.token);
     }
-  };
+
+    // Save user
+    if (res.data?.user) {
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+    }
+
+    // Redirect after registration
+    navigate("/dashboard");
+
+  } catch (err) {
+    alert(err.response?.data?.error || "Registration failed");
+    console.log(err.response?.data || err);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-20">
