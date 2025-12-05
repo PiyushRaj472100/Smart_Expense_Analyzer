@@ -14,10 +14,12 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:4000/auth/login", {
-        email,
-        password,
-      });
+     const API = "https://smart-expense-analyzer-server.onrender.com";
+
+    const res = await axios.post(`${API}/auth/login`, {
+    email,
+    password,
+      }); 
 
       // Save token
       localStorage.setItem("token", res.data.token);

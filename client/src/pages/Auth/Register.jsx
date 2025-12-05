@@ -27,10 +27,12 @@ export default function Register() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:4000/auth/register", {
-        name,
-        email,
-        password,
+    const API = "https://smart-expense-analyzer-server.onrender.com";
+
+await axios.post(`${API}/auth/register`, {
+  name,
+  email,
+  password,
       });
 
       if (res.data?.token) {
