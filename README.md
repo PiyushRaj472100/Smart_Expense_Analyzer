@@ -4,23 +4,29 @@ A full-stack personal finance dashboard that helps you track daily expenses, vis
 
 ## Live Demo
 
-> Add your deployed frontend URL here (e.g. `https://smart-expense-analyzer.vercel.app`).
+### 🔹 Frontend (User Interface)
+https://smart-expense-analyzer.vercel.app
+
+### 🔹 Backend API (Node.js + Express)
+https://smart-expense-analyzer.onrender.com
+
+
+
+
 
 ## Screenshots
 
-> Save your screenshots in the repo under `assets/` with the filenames below so these links render correctly on GitHub.
+### Login Screen
+<img src="client/screens/login.jpg" width="600">
 
-- **Landing / Auth Screen**  
-  ![Smart Expense Analyzer – Login](assets/01-login.png)
+### Dashboard
+<img src="client/screens/dashboards.jpg" width="600">
 
-- **Dashboard Overview**  
-  ![Smart Expense Analyzer – Dashboard](assets/02-dashboard.png)
+### Analytics
+<img src="client/screens/analytics.jpg" width="600">
 
-- **Analytics View**  
-  ![Smart Expense Analyzer – Analytics](assets/03-analytics.png)
-
-- **Transactions Management**  
-  ![Smart Expense Analyzer – Transactions](assets/04-transactions.png)
+### Transactions
+<img src="client/screens/transactions.jpg" width="600">
 
 ## Features
 
