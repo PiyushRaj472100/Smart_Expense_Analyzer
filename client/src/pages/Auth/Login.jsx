@@ -14,9 +14,8 @@ export default function Login() {
     setLoading(true);
 
     try {
-     const API = "https://smart-expense-analyzer-server.onrender.com";
-
-    const res = await axios.post(`${API}/auth/login`, {
+    const API_URL = import.meta.env.VITE_API_URL;
+    const res = await axios.post(`${API_URL}/auth/login`, {
     email,
     password,
       }); 

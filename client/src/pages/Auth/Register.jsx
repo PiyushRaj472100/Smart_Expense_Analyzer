@@ -27,9 +27,8 @@ export default function Register() {
     setLoading(true);
 
     try {
-    const API = "https://smart-expense-analyzer-server.onrender.com";
-
-await axios.post(`${API}/auth/register`, {
+    const API_URL = import.meta.env.VITE_API_URL;
+await axios.post(`${API_URL}/auth/register`, {
   name,
   email,
   password,
