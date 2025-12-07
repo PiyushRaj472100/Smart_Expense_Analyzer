@@ -203,16 +203,16 @@ export const getInsightsSummary = async (req, res) => {
 		if (!thisMonthTotal && !prevMonthTotal) {
 			summary = "No spending data yet. Start adding transactions to see insights.";
 		} else {
-			summary += `You have spent approximately ${thisMonthTotal.toFixed(0)} this month.`;
+			summary += `You have spent approximately ${thisMonthTotal.toFixed(0)} this month.`;
 			if (changePercent !== null) {
 				const dir = changePercent >= 0 ? "more" : "less";
 				summary += ` That is ${Math.abs(changePercent).toFixed(1)}% ${dir} than last month.`;
 			}
 			if (topCategory) {
-				summary += ` Your top category overall is ${topCategory.category} (${topCategory.total.toFixed(0)}).`;
+				summary += ` Your top category overall is ${topCategory.category} (${topCategory.total.toFixed(0)}).`;
 			}
 			if (biggestDay) {
-				summary += ` Your biggest single day in the last 60 days was ${biggestDay.date} (${biggestDay.total.toFixed(0)}).`;
+				summary += ` Your biggest single day in the last 60 days was ${biggestDay.date} (${biggestDay.total.toFixed(0)}).`;
 			}
 		}
 
