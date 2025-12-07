@@ -18,7 +18,47 @@ dotenv.config({ path: path.join(__dirname, ".env"), override: true });
 
 const app = express();
 
-app.use(cors());
+//app.use(cors());
+// CORS Configuration - Allow requests from frontend (Vercel) and localhost
+// This fixes CORS issues when deploying frontend on Vercel and backend on Render
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, Postman, or same-origin requests)
+    if (!origin) return callback(null, true);
+    
+    // List of allowed origins
+    const allowedOrigins = [
+      'http://localhost:5173',      // Local Vite dev server
+      'http://localhost:3000',       // Alternative local port
+      'https://smart-expense-analyzer.vercel.app', // Production Vercel URL
+      /^https:\/\/.*\.vercel\.app$/, // Any Vercel preview deployments
+    ];
+    
+    // Check if origin matches allowed origins
+    if (allowedOrigins.some(allowed => {
+      if (typeof allowed === 'string') {
+        return origin === allowed;
+      } else if (allowed instanceof RegExp) {
+        return allowed.test(origin);
+      }
+      return false;
+    })) {
+      callback(null, true);
+    } else {
+      // In development, allow all origins for easier testing
+      if (process.env.NODE_ENV !== 'production') {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    }
+  },
+  credentials: true, // Allow cookies/auth headers
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // PUBLIC ROUTE
